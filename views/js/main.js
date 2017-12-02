@@ -511,12 +511,12 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
-  window.performance.mark("mark_end_frame");
-  window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
-  if (frame % 10 === 0) {
-    var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
-    logAverageFrame(timesToUpdatePosition);
-  }
+  // window.performance.mark("mark_end_frame");
+  // window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
+  // if (frame % 10 === 0) {
+  //   var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
+  //   logAverageFrame(timesToUpdatePosition);
+  // }
 
 
 // runs updatePositions on scroll
