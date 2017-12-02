@@ -25,7 +25,21 @@
       ga('send', 'pageview');
     </script>
     <script src="http://www.google-analytics.com/analytics.js"></script>
-    <script src="js/perfmatters.js"></script>
+    <script>
+      function measureCRP() {
+        var t = window.performance.timing,
+          interactive = t.domInteractive - t.domLoading,
+          dcl = t.domContentLoadedEventStart - t.domLoading,
+          complete = t.domComplete - t.domLoading;
+        var stats = document.createElement('p');
+        stats.textContent = 'interactive: ' + interactive + 'ms, ' +
+            'dcl: ' + dcl + 'ms, complete: ' + complete + 'ms';
+        document.body.appendChild(stats);
+      }
+    </script>
+
+
+    <!-- <script src="js/perfmatters.js"></script> -->
   </head>
 
   <body>
@@ -67,8 +81,9 @@
         </ul>
       </div>
 
-      <footer>
-        <p>&copy; Web Performance 2014 <span id="crp-stats"></span></p>
+      <footer onload="measureCRP()">
+
+        <p>&copy; Web Performance 2014 <span onload="measureCRP()"></span></p>
       </footer>
     </div>
   </body>
